@@ -1,0 +1,393 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+
+
+
+
+<?php if(isset($_POST['bundle_cat_name']) && isset($_POST['bundle_ob_id'])): ?>
+    <?php $postcat = Mage::getSingleton('core/session')->setBundleCatName($_POST['bundle_cat_name']); ?>
+    <?php $postbunId = Mage::getSingleton('core/session')->setBundleObjId($_POST['bundle_ob_id']); ?>
+    <?php $currentPId = Mage::getSingleton('core/session')->setCurrentPId($_product->getId()); ?>
+<?php endif; ?>
+<?php $bundle_post = 0; ?>
+<?php $postcat =Mage::getSingleton('core/session')->getBundleCatName(); ?>
+<?php $postbunId =Mage::getSingleton('core/session')->getBundleObjId(); ?>
+<?php $currentPId =Mage::getSingleton('core/session')->getCurrentPId(); ?>
+<?php if($postcat!='' && $postbunId!='' && $currentPId==$_product->getId()): ?>
+    <?php $bundle_post = 1; ?>
+<?php else: ?>
+    <?php $bundle_post = 0; ?>
+    <?php $postcat = Mage::getSingleton('core/session')->setBundleCatName(''); ?>
+    <?php $postbunId = Mage::getSingleton('core/session')->setBundleObjId(''); ?>
+<?php endif; ?>
+
+
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
+<div class="product-view">
+    <div class="product-essential">
+        <form action="<?php echo $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+            <?php echo $this->getBlockHtml('formkey') ?>
+            <div class="no-display">
+                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                <input type="hidden" name="related_product" id="related-products-field" value="" />
+            </div>
+
+            <div class="product-img-box">
+                <div class="product-name">
+                    <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                </div>
+                <?php echo $this->getChildHtml('media') ?>
+            </div>
+
+            <div class="product-shop">
+                <div class="product-name">
+                    <span class="h1"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
+                </div>
+
+                <div class="price-info">
+                    <?php if($_product->getIsbundle()==1 && $bundle_post==1): ?>
+                        <div id="bundle-offer-prices">
+                            <?php echo $this->getPriceHtml($_product); ?>
+                        </div>
+                    <?php else: ?>
+                        <?php echo $this->getPriceHtml($_product); ?>
+                    <?php endif; ?>
+                    <?php echo $this->getChildHtml('bundle_prices') ?>
+                    <?php echo $this->getTierPriceHtml() ?>
+                </div>
+
+                <div class="extra-info">
+                    <?php echo $this->getReviewsSummaryHtml($_product, 'default', false)?>
+                    <?php echo $this->getChildHtml('product_type_availability'); ?>
+                </div>
+
+                <?php echo $this->getChildHtml('alert_urls') ?>
+
+                <?php if ($_product->getShortDescription()):?>
+                    <div class="short-description">
+                        <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                    </div>
+                <?php endif;?>
+
+
+                <?php /*added by sukumar */?>
+                <?php $_product = Mage::getModel('catalog/product')->load($_product->getId()); ?>
+                <?php $currency = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?>
+                <?php $catId = Mage::registry('current_category')->getId(); ?>
+                <?php if($_product->getIsbundle()==1): ?>
+                    <input type="hidden" name="bundle_ob_id" value="<?php echo $postcat; ?>" />
+                    <input type="hidden" name="bundle_cat_name" value="<?php echo $postbunId; ?>" />
+                <?php endif; ?>
+                <?php if($_product->getIsbundle()==1): 
+                $curl1 = curl_init();
+
+                curl_setopt_array($curl1, array(
+                    CURLOPT_RETURNTRANSFER => 1,
+                    CURLOPT_URL => 'http://bundledserver.staging-websites.com/api_1_0_0/user/productPrice/',
+                    CURLOPT_POST => 1,
+                    CURLOPT_POSTFIELDS => array(
+                        'product_id' => $_product->getId(),
+                        'category_id' => $catId,
+                        'access_token' => $access_token
+                    )
+                ));
+                $resp1 = curl_exec($curl1);
+                $response1 = json_decode($resp1);
+                $bundle_price = $_product->getFinalPrice() - $response1->raws->dataset->products->discount;
+                curl_close($curl1); ?>
+                <?php $bprice = Mage::helper('core')->currency($bundle_price, true, false); ?>
+                <?php endif; ?>
+                <?php if($_product->getIsbundle()==1 && $bundle_post==0): ?>
+                <bundle <?php echo 'data-prod_id="'.$_product->getId().'" 
+                                    data-cat_id="'.$catId.'" 
+                                    data-price="'.$bprice.'" 
+                                    data-prefixText="Bundle Price" 
+                                    data-currency="'.$currency.'" 
+                                    data-currencyratio="1" 
+                                    data-actualprice="'.$_product->getFinalPrice().'" 
+                                    data-productname="'.$_helper->productAttribute($_product, $_product->getName(), 'name').'"';
+                        ?>>
+                </bundle>
+                <?php endif; ?>
+                <?php /*added by sukumar */?>
+
+                <?php echo $this->getChildHtml('other');?>
+
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                <?php endif;?>
+
+            </div>
+
+            <div class="add-to-cart-wrapper">
+                <?php echo $this->getChildHtml('product_type_data') ?>
+                <?php echo $this->getChildHtml('extrahint') ?>
+
+                <?php if (!$this->hasOptions()):?>
+                    <div class="add-to-box">
+                        <?php if($_product->isSaleable()): ?>
+                            <?php echo $this->getChildHtml('addtocart') ?>
+                            <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                                <span class="or"><?php echo $this->__('OR') ?></span>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <?php echo $this->getChildHtml('addto') ?>
+                        <?php echo $this->getChildHtml('sharing') ?>
+                    </div>
+                    <?php echo $this->getChildHtml('extra_buttons') ?>
+                <?php elseif (!$_product->isSaleable()): ?>
+                    <div class="add-to-box">
+                        <?php echo $this->getChildHtml('addto') ?>
+                        <?php echo $this->getChildHtml('sharing') ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+            <?php /* Added by Sukumar */?>
+            <style>
+            .bundle-offer,.bundle-offer-wrap{display:none;}
+            </style>
+
+
+            <?php
+            if($bundle_post==1): 
+                $curl = curl_init();
+
+                curl_setopt_array($curl, array(
+                    CURLOPT_RETURNTRANSFER => 1,
+                    CURLOPT_URL => 'http://bundledserver.staging-websites.com/api_1_0_0/user/token/',
+                    CURLOPT_POST => 1,
+                    CURLOPT_POSTFIELDS => array(
+                       'grant_type' => 'client_credentials',
+                        'client_id' => Mage::getStoreConfig('cataloginventory/options/api_client_id'),
+                        'client_secret' => Mage::getStoreConfig('cataloginventory/options/api_client_secret')
+                    )
+                ));
+
+                $resp = curl_exec($curl);
+                $response = json_decode($resp);
+                $access_token = $response->access_token;
+                curl_close($curl);
+
+                $curl1 = curl_init();
+
+                curl_setopt_array($curl1, array(
+                    CURLOPT_RETURNTRANSFER => 1,
+                    CURLOPT_URL => 'http://bundledserver.staging-websites.com/api_1_0_0/user/getProductDetailsAccordingProductCategory/',
+                    CURLOPT_POST => 1,
+                    CURLOPT_POSTFIELDS => array(
+                        'product_id' => $_product->getId(),
+                        'category_id' => $catId,
+                        'no_of_category'=>"",
+                        'price'=>$_product->getFinalPrice(),
+                        'access_token' => $access_token
+                    )
+                ));
+
+                $resp1 = curl_exec($curl1);
+                $response1 = json_decode($resp1);
+                curl_close($curl1);
+
+            ?>
+
+            <div class="bundle-offers bundle-offer-block">
+                <h2>Bundle Offers</h2>
+                <div class="selected-offers">
+                <input type="hidden" name="optdiscounttype" id="optdiscounttype" value="fixed" />
+                <?php foreach ($response1->raws->dataset->products as $key => $offer): ?>
+                    <?php if(trim($key==trim($postcat))): ?>
+                    <h4><?php echo $key; ?></h4>
+                    <ul>
+                        <?php foreach ($offer->details as $value): ?>
+                            <li>
+                                <?php if($value->bundle_object_id==$postbunId): ?>
+                                    <input type="radio" value="<?php echo $value->discount; ?>" data-bundle_id="<?php echo $value->bundle_object_id; ?>" data-cat_name="<?php echo trim($key); ?>" name="chosen"  checked />
+                                    <?php Mage::getSingleton('core/session')->setBundleDiscount($value->discount); ?>
+                                <?php else: ?>
+                                    <input type="radio" value="<?php echo $value->discount; ?>" data-bundle_id="<?php echo $value->bundle_object_id; ?>" data-cat_name="<?php echo trim($key); ?>" name="chosen" />
+                                <?php endif; ?>
+
+
+                                <span class="bundle-img"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(40,40); ?>"/></span>
+                                <span class="plus-block">+</span> 
+                                <span class="name-wrap">
+                                    <span><img src="<?php echo $value->bundle_object_image_URL;  ?>" height="40"/></span>
+                                    <div class="details-wrap">
+                                        <label>Get <?php echo Mage::helper('core')->currency($value->discount, true, false); ?> discount on purchase of </label>
+                                        <p><?php echo $value->bundle_object_name; ?></p>
+                                        <label>from <a href="<?php echo $value->retailer_URL; ?>" target="_blank"><?php echo $value->retailer_URL; ?></a></label>
+                                    </div>
+                                </span>
+                                <span class="equal-block">=</span>
+                                <span class="price-sec">
+                                <h6><?php echo $this->__('BUNDLE PRICE'); ?></h6>
+                                <?php $bPrice = $_product->getFinalPrice() - $value->discount; ?>
+                                <span class="actual-price"><?php echo Mage::helper('core')->currency($bPrice, true, false); ?></span>
+                                </span>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                    </div>
+                    <div id="bundle-cat-list">
+                        <ul>
+                        <?php foreach ($response1->raws->dataset->products as $key => $offer): ?>
+                        <?php if(is_object($offer)): ?>
+                            <?php if(trim($key!=trim($postcat))): ?>
+                            <li class="each-cat">
+                                <span><img src="<?php echo $offer->image; ?>" width="50" height="50"/>
+                                <div class="off_holder">
+                                <?php foreach ($offer->details as $value): ?>
+                                       <div class="bndl_catdet">
+                                          <div class="bndl_off">
+                                            <?php $bPrice = $_product->getFinalPrice() - $value->discount; ?>
+                                            <?php $actualprc = Mage::helper('core')->currency($bPrice, true, false); ?>
+                                             <a data-discounted_price="<?php echo $actualprc; ?>" data-discount="<?php echo $value->discount; ?>" data-bundle_id="<?php echo $value->bundle_object_id; ?>" data-cat_name="<?php echo trim($key); ?>">
+                                                <img src="http://image3.pricedekho.com/p/45/69897/168500-whirlpool-195-mp-4w-single-door-refrigerator-picture-large.jpg" >
+                                                <h4 class="ng-binding">
+                                                   Buy this <?php if(strlen($value->bundle_object_name)>30): echo substr($value->bundle_object_name, 0,30).'<span>...</span>'; else: echo $value->bundle_object_name; endif; ?> 
+                                                </h4>
+                                                <span >in the next <?php echo $value->validity; ?> days and get an additional discount of <?php echo number_format(($value->discount/$_product->getFinalPrice())*100, 2, '.', ''); ?>% </span><span >(Discount: <?php echo Mage::helper('core')->currency($value->discount, true, false); ?>) on <?php echo $_product->getName(); ?></span>
+                                             </a>
+                                          </div>
+                                       </div>
+                                       <div class="bndl_catdet">
+                                          <div class="bndl_off">
+                                             <a data-cat="">
+                                                <img src="http://image3.pricedekho.com/p/45/69897/168500-whirlpool-195-mp-4w-single-door-refrigerator-picture-large.jpg" >
+                                                <h4 class="ng-binding">
+                                                   Buy this <?php if(strlen($value->bundle_object_name)>30): echo substr($value->bundle_object_name, 0,30).'<span>...</span>'; else: echo $value->bundle_object_name; endif; ?> 
+                                                </h4>
+                                                <span >in the next <?php echo $value->validity; ?> days and get an additional discount of <?php echo number_format(($value->discount/$_product->getFinalPrice())*100, 2, '.', ''); ?>% </span><span >(Discount: <?php echo Mage::helper('core')->currency($value->discount, true, false); ?>) on <?php echo $_product->getName(); ?></span>
+                                             </a>
+                                          </div>
+                                       </div>
+                                <?php endforeach; ?>
+                                </div>
+                                </span>
+                            </li>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+             <?php endif; ?>
+            <?php /* Added by Sukumar */?>
+
+
+
+            <?php echo $this->getChildHtml('related_products') ?>
+
+            <div class="clearer"></div>
+            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+            <?php endif;?>
+        </form>
+        <script type="text/javascript">
+        //<![CDATA[
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
+                if (this.validator.validate()) {
+                    var form = this.form;
+                    var oldUrl = form.action;
+
+                    if (url) {
+                       form.action = url;
+                    }
+                    var e = null;
+                    try {
+                        this.form.submit();
+                    } catch (e) {
+                    }
+                    this.form.action = oldUrl;
+                    if (e) {
+                        throw e;
+                    }
+
+                    if (button && button != 'undefined') {
+                        button.disabled = true;
+                    }
+                }
+            }.bind(productAddToCartForm);
+
+            productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        //]]>
+        </script>
+    </div>
+
+    <div class="product-collateral toggle-content tabs">
+        <?php if ($detailedInfoGroup = $this->getChildGroup('detailed_info', 'getChildHtml')):?>
+            <dl id="collateral-tabs" class="collateral-tabs">
+                <?php foreach ($detailedInfoGroup as $alias => $html):?>
+                    <dt class="tab"><span><?php echo $this->escapeHtml($this->getChildData($alias, 'title')) ?></span></dt>
+                    <dd class="tab-container">
+                        <div class="tab-content"><?php echo $html ?></div>
+                    </dd>
+                <?php endforeach;?>
+            </dl>
+        <?php endif; ?>
+    </div>
+
+    <?php echo $this->getChildHtml('upsell_products') ?>
+    <?php echo $this->getChildHtml('product_additional_data') ?>
+
+</div>

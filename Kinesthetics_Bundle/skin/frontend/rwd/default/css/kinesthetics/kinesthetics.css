@@ -1,0 +1,521 @@
+ .bundled_offer { position: relative; padding-bottom: 20px;}
+ .bundled_offer > div { display: none; position: absolute; background: #f8f8f8; z-index: 99; width:310px; -webkit-box-shadow: 1px 1px 10px 1px #666; padding: 10px 0; left: 95%; bottom: 99%; 
+  -moz-box-shadow:1px 1px 10px 1px #666; box-shadow:1px 1px 10px 1px #666; }
+ /*.bundled_offer:hover > div {display:block; bottom: 100%;}*/
+ .bundled_offer > a > ul > li { clear: both; display: table; padding:15px 0; border-bottom: 1px dotted #ccc; width: 100%; }
+ .bundled_offer > a > ul > li:last-child { border-bottom: none;}
+ .bundled_offer > a > ul > li input[type=radio] { float: left; margin:0 10px; }
+ .bundled_offer > a > ul > li > div { float: left; margin: 0 10px;}
+ .bundled_offer > a > ul > li > div.bundled_ingo h3 { font-size: 16px;}
+ .bundled_offer > a > ul > li > div.bundled_ingo > span { color: #3399cc;}
+
+.bundled_offer > a > div{display: none;  position: absolute;  left: 2%;  width: 100%;}
+ .bundled_offer > a:hover > div{display:block;}
+
+ .putUp ul li { display: block; text-align: left; padding: 5px 0; border-top: 1px solid #e0e0e0; margin-bottom: 2px}
+ .putUp ul li:first-child{ border-top:0;}
+ 
+ .putUp ul li:hover{ background: #ebebeb}
+
+ .putUp ul li a.ng-binding{  display: block; padding:0 10px; position: relative; margin-right: 2px; background: url(../../images/kinesthetics/right_arrow.png) no-repeat right 5px; cursor: pointer;font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 15px}
+
+  span.bundle_reload{ height: 32px; background: url(../../images/kinesthetics/loader.gif) no-repeat center top; display: block;  position: relative; width: 100%;}
+
+  .bundle-offers { /*float:left;*/ border:1px solid #ccc; padding: 10px; margin-bottom: 20px; margin-top:10px; display: table-cell; vertical-align: top;}
+
+  .bundle-offers span, .bundle-offers input[type='radio'] { display: inline-block;  padding: 0 10px; vertical-align: top}
+
+  .bundle-offers input[type='radio']{ margin-top: 22px;}
+
+  .bundle-offers span > span{ width: 70px;}
+
+  .bundle-offers h2{ color: #3399cc}
+
+  .plus-block, .equal-block { font-size: 33px;}
+
+  .price-sec{ margin-top: 8px;}
+
+  span.name-wrap{ border: 1px dashed #ccc; padding: 20px 10px}
+
+  span.bundle-img{ margin-top: 11px;}
+
+   .bundle-offers .details-wrap{display: inline-block; width: 200px;}
+   .bundle-offers .details-wrap p{color: #3399cc;}
+   .bundle-offers .details-wrap label{color: #636363; font-size: 11px; font-weight: normal;}
+
+   span.price-sec h6{color: #3399cc;}
+
+   .bundle-offers ul li { padding: 10px 0;  border-top: 1px solid #ccc; position: relative;}
+
+   .bundle-offers ul li:first-child{border-top: 0 solid #ccc;}
+
+.putUp ul li a.ng-binding.opened_up{background: url(../../images/kinesthetics/arrow_down.png) no-repeat right 5px}
+
+ .off_holder{ background: #ffffff ; margin-top: 5px;}
+
+ div.bundled_offer .bndl_off{ border: 1px solid #fff; background:url(../../images/kinesthetics/right_arrow_pop.png) no-repeat right center;}
+ div.bundled_offer .bndl_off:hover{ border: 1px solid #3399cc;}
+
+ .bundled_offer .putUp a{  /*border: 2px solid #3399cc;*/ }
+
+ .off_holder > div.bndl_catdet.ng-scope{ padding: 0 ; margin: 0;}
+ .off_holder > div.ng-scope{ border-top: 1px solid #ccc; padding: 10px}
+
+
+ .off_holder > div.ng-scope a img{ width: 50px; height: 50px; border: none; margin-bottom: 5px; float: left; margin: 0 10px 0 0}
+
+   .off_holder > div.ng-scope a { cursor: pointer; display: block}
+
+  .off_holder > div.ng-scope a h4{ color: #222; text-transform: capitalize;}
+
+ .off_holder > div.ng-scope:first-child{ border-top:0 solid #ccc;}
+
+ .putUp ul li > a:hover,  .off_holder > div.ng-scope a:hover{ text-decoration: none;}
+
+span.signatured_image{ cursor: pointer; background: url(../../images/kinesthetics/Logo-option-8.jpg) no-repeat center 0; display: inline-block; position: relative; /*width: 20px; height: 20px;*/ position: absolute; right: -16px; padding: 10px;}
+ /* span.signatured_image span{ border-radius: 50%; background: #3399cc ;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    top: 3px;
+    width: 20px; cursor: pointer;}*/
+span.signatured_image.image_on > span{ display: none;
+ position: absolute; color: #ffffff; top:50%; height: auto; width: 100%; 
+  font-size: 13px; background: #696969; padding: 3px 10px; 
+ text-transform: capitalize; z-index: 99; left: auto; right: auto; 
+    line-height: 17px;
+ font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+span.signatured_image.image_on > span > i{font-style: normal;}
+span.signatured_image.image_on:hover > span{ display: block;  left: 0;}
+div.bundled_offer.image_onn span.signatured_image{ display: block; width: 30px; padding: 0; margin: 0 auto; position: static; height:30px; left:auto; right:auto;}
+.bundled_offer.image_onn a.ng-binding{ padding-right: 0;}
+
+
+
+
+ .bundled_offer a.ng-binding {display: inline-block; padding-left: 10px;}
+
+ .putUp h3{text-align: left; padding: 0px 0px 0px 10px; position: relative;}
+
+ .putUp h3 > span {background: #CA3B05;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    top: 10px;
+    width: 20px; cursor: pointer;}
+
+   .putUp h3 > span > i{ display: none; 
+    position: absolute;
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;
+    right: 0;
+    top: -63px;
+    height: 50px;
+    width: 242px;
+    font-style: normal;
+    font-size: 13px;
+    background: #696969;
+    padding: 5px 14px;
+    text-transform: capitalize;
+    z-index: 99;
+    font-weight: 400;
+   }
+
+   .putUp h3 > span:hover > i{ display: block;}
+
+   .image_on > a > div{
+    display:none;
+   }
+   .image_on > a:hover > div{
+    display: block;
+   };
+
+
+
+
+   /*===================04-08-2015==================*/
+   .bundled_offer{ text-align: center;}
+   .bundled_offer > a, .bundled_offer > span{ display: inline-block; margin:0 6px; float: none; position: static;}
+   .bundled_offer span{
+
+   }
+   .bundled_offer a.ng-binding{ margin: 0; padding-left: 0;}
+   .putUp span.bndl_btn{ margin:3px 0 5px 0; display: inline-block;}
+   .putUp span.bndl_btn a{
+    
+     font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 8px 40px 8px 20px;
+    color: #FFF;
+    background:url(../../images/kinesthetics/bttn_arrow_popup.png) #3399cc no-repeat 92% 40%;
+   }
+  .putUp span.bndl_btn a:hover{ text-decoration: none; background:url(../../images/kinesthetics/bttn_arrow_popup.png) #f15c22 no-repeat 92% 40%; }
+   .bundled_offer a{ position: relative; padding-right: 6px;}
+   .bundled_offer i.bundle_lowest_price{   
+    font-size: 14px;
+    font-style: normal;
+    color: #555555;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+   }
+   .putup_parent{
+        position: absolute;
+    right: 0;
+    bottom: 90%;
+    width: 264px;
+   }
+  .putUp{
+    width: 264px;
+    background-color: #FFF;
+    padding:0 0 12px 0;
+    border: 1px solid #d7d6d6;
+    left:100%;
+    top: -130px;
+    z-index: 9999;
+    border-radius: 6px;
+    position: absolute;
+   box-shadow: 0px 0px 2px 1px #E0E0E0;
+   } 
+.putUp:after{ 
+  content: ""; 
+  position: absolute;
+    width: 11px;
+    height: 20px;
+    left: -10px;
+    top:38%;
+    background: url(../../images/kinesthetics/left_arow_popup.png) no-repeat;
+   /*width: 39px; 
+   height: 13px; 
+   left: 12px;
+   bottom: -13px;
+      background: url(../../images/kinesthetics/box_khocha.png) no-repeat;*/
+    }
+
+ .putUp h3{
+  font-family: 'Open Sans', sans-serif;
+    background-color: #f15c22;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 9px 10px;
+    border-radius: 6px 6px 0 0;
+    margin-bottom: 0;
+}
+
+.putUp ul.bndl_ul{
+        max-height: 168px;
+    overflow: auto;
+   }
+   .putUp .bndl_catdet{    background-color: #F4F4F4; padding: 5px 0;}
+  .putUp .bndl_ul li a{ margin: 0;}
+   .putUp .ng-bndl_off h4{ font-size: 14px; font-weight: 400; line-height: normal;}
+   .putUp .ng-bndl_off h4 span{ display: inline; margin:0; }
+  .putUp .bndl_off{ 
+    display: block;
+    clear: both;
+    padding: 10px;
+    margin: 0 1px 6px;
+    background-color: #FFF;
+  }
+   .putUp .bndl_off span{ font-size: 13px; font-weight: 300; line-height: normal; }
+  /*.bndl_ul .mCSB_inside > .mCSB_container{ margin-right: 9px;}*/
+ 
+  .mCSB_scrollTools .mCSB_draggerRail{ width: 6px;}
+  .mCSB_scrollTools .mCSB_draggerContainer{ right: -3px;}
+
+
+  a.disable_sibling { position: absolute; top: 23px;     width: 100%; left: 0;}
+
+  a.disable_sibling + span{ display: none !important;}
+
+  .bndl_scrl_up, .bndl_scrl_dn{
+    width:100%;
+    height:30px;
+    display: block;
+    cursor: pointer;
+    opacity: 0.5;
+  }
+  .bndl_scrl_up:hover, .bndl_scrl_dn:hover{
+    opacity: 0.8;
+  }
+  .bndl_scrl_up{
+    background: url(../../images/kinesthetics/scrl_up.png) center center no-repeat;
+    background-size: auto 70%;
+  }
+  .bndl_scrl_dn{
+    background: url(../../images/kinesthetics/scrl_dn.png) center center no-repeat;
+    background-size: auto 70%;
+  }
+  .mCSB_scrollTools{
+    opacity:0.5 !important;
+  }
+
+
+/*=======================*/
+#bundle-cat-list ul > li{ }
+#bundle-cat-list ul li span{ cursor: pointer;position: relative;}
+
+#bundle-cat-list ul li > span div.off_holder{
+   display: none;
+      width: 264px;
+    background-color: #FFF;
+    padding:10px 0;
+    border: 1px solid #d7d6d6;
+    left: 100%;
+    top: -150px;
+    z-index: 9999;
+    border-radius: 6px;
+    position: absolute;
+    box-shadow: 0px 0px 2px 1px #E0E0E0;
+    
+}
+#bundle-cat-list ul li > span div.off_holder:after {
+    content: "";
+    position: absolute;
+    width: 11px;
+    height: 20px;
+    left: -10px;
+    top:145px;
+    background: url(../../images/kinesthetics/left_arow_popup.png) no-repeat;
+    /*background: url(../../images/kinesthetics/box_khocha.png) no-repeat;*/
+}
+#bundle-cat-list ul li span:hover div.off_holder{ display: block;}
+
+#bundle-cat-list ul li > span div.off_holder .bndl_catdet img{ width:50px; height: auto; float: left;}
+#bundle-cat-list ul li > span div.off_holder .bndl_catdet{ width: 100%; float: left; border-top: 1px solid #3399cc; clear: both; padding: 10px 0;}
+#bundle-cat-list ul li > span div.off_holder .bndl_catdet:first-child{ margin-top: 0; border-top:0;}
+#bundle-cat-list .mCustomScrollBox{ max-height: 264px;}
+#bundle-cat-list .mCSB_inside > .mCSB_container{ margin-right: 17px;}
+
+
+.bundle-offer-block{ width:59%; padding-left: 0;}
+.bundle-offer-block .selected-offers{ width: 68%; float: left;}
+.bundle-offer-block #bundle-cat-list{ width: 28%; float: right;}
+.bundle-offer-block .selected-offers span.name-wrap{ width: 55%;}
+.bundle-offer-block .selected-offers span > span{ width: 22%;}
+.bundle-offer-block .selected-offers span > span img{ width: 100%; height: auto;}
+.bundle-offer-block .selected-offers .details-wrap{ width: 72%;}
+
+
+.catalog-product-view div.bundled_offer.image_onn span.signatured_image{ float: right; margin: 0; text-align: right;}
+.catalog-product-view .product-options{ margin-top: 40px;}
+
+.catalog-product-view span.signatured_image.image_on > span{ width: auto; left: inherit; right: 0; top: 100%;}
+
+
+.bndl_ul .mCSB_scrollTools {
+  visibility: hidden !important;
+}
+span.bundle_reload.hidden{
+  display:none;
+}
+
+span.bndl_cat_name{
+  display:block;
+  clear:both;
+}
+.bundle-img{
+  width:80px;
+}
+.bundle-img > img{
+  display: block;
+  max-width: 100%;
+  height:auto;
+}
+.res_cat_holder{
+  clear:both;
+}
+/*.bundled_offer.image_onn .putUp{ display: block; }*/
+
+.bundle-offer-wraper { clear:both; display: table;}
+.res_cat_holder{ display:table-cell; vertical-align: top; width:40%; padding: 10px; margin-top:10px; margin-left:10px; border:1px solid #ccc; border-left:none; position:relative;}
+.res_cat_holder ul li{ padding:5px 0; border-top: 1px solid #ccc; position: relative; width: 62%; display: inline-block;}
+.res_cat_holder > ul li:hover { background: #ebebeb;}
+.res_cat_holder ul li:first-child{ border: none;}
+.res_cat_holder ul li > a img{ display: inline-block; width: 50px; height: 50px;}
+.res_cat_holder ul li > a h4{  font-size: 15px; text-transform: uppercase; padding-left: 10px; color: #3399cc; vertical-align: top; line-height: 1.6; margin: 0; }
+/*new*/
+
+.res_cat_holder > ul li {
+  padding: 10px 0;
+}
+.res_cat_holder > ul > li > a h4 {display: inline-block; width: 82%; padding-left: 9%; font-size: 14px;}
+.res_cat_holder > ul > li > a h4 span {
+    color: #000;
+    text-transform: capitalize;
+    font-size: 13px;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+#usedOffer h4 img {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
+}
+#usedOffer h4 span {
+  width: 90%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.discounted_price strong {
+  color: #3399cc;
+  text-transform: uppercase;
+  display: block;
+  margin: 10px 0;
+}
+.discounted_price span {
+  color: #a33d6a;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1;
+  text-align: left;
+  vertical-align: middle;
+}
+.discounted_price i {
+  background: #000 none repeat scroll 0 0;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  color: #fff;
+  display: inline-block;
+  font-style: normal;
+  font-weight: 400;
+  height: 23px;
+  line-height: 1.7;
+  margin-left: 12px;
+  padding: 0 2px;
+  position: relative;
+  vertical-align: middle;
+}
+.discounted_price i:before{
+  content:'';
+  position:absolute;
+  left:-9px;
+  top: 0;
+  
+
+  width: 0; 
+  height: 0; 
+  border-top: 11px solid transparent; 
+  border-right: 12px solid #000; 
+  border-bottom: 13px solid transparent;
+}
+.strikethrough > span {
+  text-decoration: line-through;
+}
+
+/* /new*/
+
+.res_cat_holder ul li > ul{
+ background-color: #fff;
+    border: 1px solid #d7d6d6;
+    border-radius: 6px;
+    box-shadow: 0 0 2px 1px #e0e0e0;
+    left: 70%;
+    /*padding:12px;*/
+    position: absolute;
+    top: 0;
+    width: 264px;
+    z-index: 9999;  display: none;
+  }
+.res_cat_holder ul li > ul li:hover { background: #ebebeb;}
+  .res_cat_holder ul li:hover > ul{ display: block;}
+
+  .res_cat_holder ul li > ul:after{background: rgba(0, 0, 0, 0) url("../../images/kinesthetics/left_arow_popup.png") no-repeat scroll 0 0;
+content: "";
+height: 20px;
+left: -10px;
+position: absolute;
+top: 19%;
+width: 11px;}
+.res_cat_holder ul li > ul li{ width: 100%; padding:12px;}
+.res_cat_holder ul li > ul li a{ cursor: pointer; display: block}
+.res_cat_holder ul li > ul li img{ width: 50px; height: 50px; max-width: 100%; float: left; margin: 0 10px 0 0;}
+.res_cat_holder ul li > ul li img + h4{ margin:0; color: #222; text-transform: capitalize; font-size: 14px; line-height:normal}
+.res_cat_holder ul li > ul li img + h4 + span {font-size: 13px;font-weight: 300; line-height: normal; color: #3399cc}
+
+a.close_bundle_off { background: url(../../images/kinesthetics/close.png) no-repeat right top; text-indent: -9999px; display: block;height: 22px;
+    position: absolute; right: 10%; text-indent: -9999px; width: 22px;}
+
+.catalog-product-view .putup_parent { bottom: 100%;}
+.catalog-product-view .putup_parent .putUp {
+    background-color: #fff;
+    border: 1px solid #d7d6d6;
+    border-radius: 6px;
+    box-shadow: 0 0 2px 1px #e0e0e0;
+    left: 30%;
+    padding: 0 0 12px;
+    position: absolute;
+    top: 20px;
+    width: 264px;
+    z-index: 9999;
+}
+.catalog-product-view .putup_parent .putUp:after { display: none;}
+.catalog-product-view div.bundled_offer .putup_parent .putUp span.bndl_btn { text-align: center; display: block;}
+.terms_n_condition:before { clear: both; display: block; content: "";}
+.terms_n_condition { border: 1px solid #cccccc; margin:0 0 10px 0; padding: 15px; position:relative;}
+.terms_n_condition .box h3 { /*margin:10px 0;*/}
+.terms_n_condition .box p { margin:10px 0; font-size: 12px;}
+.catalog-product-view .bundle-offer-wraper { margin-bottom: 40px;}
+.terms_n_condition{
+  clear:both;
+}
+.bundle-offer-prices span.price { text-decoration: line-through;}
+
+.bundle-main-wraper {
+   position: relative;
+    border:2px solid #ccc;
+    clear: both;
+    margin: 10px 0 25px;
+    padding: 10px;
+}
+.bundle-main-wraper .bundle-offers { padding: 10px; position:relative;}
+span.bndl_cross { background: url(../../images/kinesthetics/close_btn.png) no-repeat right top; text-indent: -9999px; display: block;height: 25px;
+    position: absolute; right:-13px; top:-13px; width: 25px; cursor:pointer;}
+
+#product-options-wrapper .bundle-offer, #product-options-wrapper #bundle-offer{display:none;}
+.putup_parent .mCSB_inside > .mCSB_container { margin-right:0 !important;}
+.putUp h3 span.signatured_image{ cursor: pointer; background: url(../../images/kinesthetics/Logo-option-8.jpg) no-repeat left top; display: inline-block; position: relative; /*width: 20px; height: 20px;*/ position: absolute; left:2%; padding: 10px; border-radius:0;}
+.category-products .putUp h3 { padding:9px 10px 9px 30px;}
+.product-shop .putup_parent { right:13%;}
+.terms_n_condition h2 { padding-left:25px;}
+.terms_n_condition h2.closed { background: url(../../images/kinesthetics/plus_icon.png) no-repeat right top; height:32px; cursor:pointer;}
+.terms_n_condition h2.closed.opened { background: url(../../images/kinesthetics/minus_icon.png) no-repeat right top; height:32px; cursor:pointer;}
+.terms_n_condition h2 span.signatured_image{ cursor: pointer; /*background: url(../../images/kinesthetics/Logo-option-8.jpg) no-repeat left top;*/ display: inline-block; position: relative; width: 20px; height: 20px; position: absolute; left:10px; top:20px; padding: 10px; border-radius:0;}
+.bundle-main-wraper .bundle-offers h2 { padding-left:30px;}
+.bundle-main-wraper .bundle-offers h2 span.signatured_image{ cursor: pointer; /*background: url(../../images/kinesthetics/Logo-option-8.jpg) no-repeat left top;*/ display: inline-block; position: relative; width: 20px; height: 20px; position: absolute; left:10px; top:15px; padding: 10px; border-radius:0;}
+.bundle-main-wraper .res_cat_holder span.signatured_image{ cursor: pointer; /*background: url(../../images/kinesthetics/Logo-option-8.jpg) no-repeat left top;*/ display: inline-block; position: relative; width: 20px; height: 20px; position: absolute; left:10px; top:10px; padding: 10px; border-radius:0;}
+.bundle-main-wraper .res_cat_holder h4 { padding-left:25px;}
+.off_holder .bndl_off > a {
+    padding-right: 12px;
+}
+.have-bundle-option { display:none;}
+ol.products-list .bundled_offer > a { padding-left:20px;}
+ol.products-list .bundled_offer > a .putUp { top:-70px; left:90%;}
+ol.products-list .bundled_offer > a .putUp span.bndl_btn { display:block; text-align:center;}
+
+@media only screen and (max-width: 400px) {
+
+  #bundle-cat-list ul li > span div.off_holder:after, .putUp:after{ display: none;}
+}

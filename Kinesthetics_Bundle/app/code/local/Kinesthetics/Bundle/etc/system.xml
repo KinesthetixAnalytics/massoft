@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<config>
+	  <tabs>
+		<bundle_configuration translate="label" module="bundle">
+            <label>Bundle Configuration</label>
+            <sort_order>0</sort_order>
+        </bundle_configuration>
+	  </tabs>
+	  <sections>
+		<bundle_section  translate="label" module="bundle">                    
+		<label>Bundle Configuration</label>
+		<tab>bundle_configuration</tab>
+		<frontend_type>text</frontend_type>
+		<sort_order>0</sort_order>
+		<show_in_default>1</show_in_default>
+		<show_in_website>1</show_in_website>
+		<show_in_store>1</show_in_store>            
+					<groups>
+				      <bundle_group translate="label"> 
+					  <label>Configuration</label>
+					  <frontend_type>text</frontend_type>
+					  <sort_order>0</sort_order>
+					  <show_in_default>1</show_in_default>
+					  <show_in_website>1</show_in_website>
+					  <show_in_store>1</show_in_store>
+				       <fields>
+                          <api_url translate="label">
+                            <label>API Url</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </api_url>
+                          <api_client_id translate="label">
+                            <label>Client ID</label>
+							              <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </api_client_id>
+                          <api_client_secret translate="label">
+                            <label>Client Secret</label>
+							              <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </api_client_secret>
+                          <no_of_categories translate="label">
+                            <label>No. of Categories to show</label>
+							              <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </no_of_categories>
+                          <show_bundle_price_category translate="label">
+                            <label>Show Bundle Price in Category Page</label>
+							              <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </show_bundle_price_category>
+                          <show_bundle_price_product translate="label">
+                            <label>Show Bundle Price in Product Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </show_bundle_price_product>
+					   </fields>
+					   </bundle_group>
+					</groups>
+		</bundle_section>
+	  </sections>
+</config>

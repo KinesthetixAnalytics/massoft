@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Kinesthetics_Bundle>
+      <version>0.1.0</version>
+    </Kinesthetics_Bundle>
+  </modules>
+
+
+  <frontend>
+        <routers>
+            <bundle>
+                <use>standard</use>
+                <args>
+                    <module>Kinesthetics_Bundle</module>
+                    <frontName>bundle</frontName>
+                </args>
+            </bundle>
+        </routers>
+        <layout>
+          <updates>
+              <bundle>
+                  <file>kinesthetics/bundle.xml</file>
+              </bundle>
+          </updates>
+        </layout>
+  </frontend>
+
+  <global>
+    <rewrite>        
+      <kinesthetics_bundle_checkout_cartcontroller>
+          <from><![CDATA[#^/checkout/cart/#]]></from> <!-- Mage_Checkout_CartController  -->
+          <to>/bundle/checkout_cart/</to> <!-- Kinesthetics_Bundle_Checkout_CartController  -->
+      </kinesthetics_bundle_checkout_cartcontroller>
+    </rewrite>
+    <helpers>
+      <bundle>
+        <class>Kinesthetics_Bundle_Helper</class>
+      </bundle>
+    </helpers>
+    <resources>
+            <kinesthetics_bundle_setup>
+                <setup>
+                    <module>Kinesthetics_Bundle</module>
+                </setup>
+            </kinesthetics_bundle_setup>
+        </resources>  
+  </global>
+</config> 
